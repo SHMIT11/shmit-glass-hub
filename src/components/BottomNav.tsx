@@ -13,7 +13,7 @@ export function BottomNav() {
 
   return (
     <nav className="fixed inset-x-0 bottom-0 z-50 px-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
-      <div className="glass-dock mx-auto flex max-w-md items-center justify-around rounded-[2.25rem] px-2 py-2.5">
+      <div className="glass-dock mx-auto flex w-full max-w-md items-center rounded-[2.25rem] p-2.5">
         {items.map(({ to, label, Icon }) => {
           const active = pathname === to;
           return (
@@ -21,14 +21,11 @@ export function BottomNav() {
               key={to}
               to={to}
               onClick={() => haptic("light")}
-              className="press flex min-w-[5.5rem] flex-col items-center gap-1 rounded-[1.75rem] px-4 py-2"
+              className="press flex min-w-0 flex-1 flex-col items-center gap-1 rounded-[1.65rem] border border-transparent px-2 py-2"
               style={
                 active
                   ? {
-                      backgroundImage:
-                        "linear-gradient(160deg, oklch(0.66 0.21 42 / 18%), oklch(0.66 0.21 42 / 6%))",
                       border: "1px solid oklch(0.66 0.21 42 / 30%)",
-                      boxShadow: "0 0 26px -10px oklch(0.66 0.21 42 / 65%)",
                     }
                   : undefined
               }
@@ -46,7 +43,6 @@ export function BottomNav() {
               >
                 {label}
               </span>
-              {active ? <span className="h-1 w-1 rounded-full bg-primary" /> : null}
             </Link>
           );
         })}

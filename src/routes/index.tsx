@@ -1,7 +1,8 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
 import { useEffect } from "react";
-import sphere from "@/assets/sphere.jpg";
+import { StarTrails } from "@/components/StarTrails";
+import { TypingCursor } from "@/components/TypingCursor";
+import { useTypingSequence } from "@/hooks/use-typing-sequence";
 import { haptic, initTelegram } from "@/lib/telegram";
 
 export const Route = createFileRoute("/")({
@@ -25,38 +26,49 @@ export const Route = createFileRoute("/")({
 
 function Welcome() {
   const navigate = useNavigate();
+  const { visible, activeLine } = useTypingSequence(
+    [
+      "Добро пожаловать в",
+      "SHMIT COMPANY",
+      "Мы создаём цифровые решения для тебя и твоего комфорта.",
+    ],
+    16,
+    160,
+  );
   useEffect(() => {
     initTelegram();
   }, []);
 
+  const typedCompany = visible[1];
+  const typedDescription = visible[2];
+  const descriptionFirstLine = "Мы создаём цифровые решения";
+
   return (
-    <div className="relative flex min-h-screen flex-col overflow-hidden bg-background">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-24 left-1/2 h-[26rem] w-[26rem] -translate-x-1/2 rounded-full blur-3xl"
-        style={{ background: "radial-gradient(circle, oklch(0.66 0.21 42 / 25%), transparent 70%)" }}
-      />
-      <div className="screen-in relative mx-auto flex w-full max-w-md flex-1 flex-col px-6 pt-[max(2rem,env(safe-area-inset-top))] pb-[max(2rem,env(safe-area-inset-bottom))]">
-        <div className="flex flex-1 items-center justify-center">
-          <img
-            src={sphere}
-            alt="Светящаяся оранжевая сфера из частиц SHMIT"
-            width={1024}
-            height={1024}
-            className="float-slow w-full max-w-[22rem] select-none"
-          />
-        </div>
+    <div className="welcome-screen relative flex min-h-[100dvh] flex-col overflow-hidden bg-background">
+      <StarTrails />
+      <div className="screen-in relative z-10 mx-auto flex w-full max-w-md flex-1 flex-col px-6 pt-[max(2rem,env(safe-area-inset-top))] pb-[max(2rem,env(safe-area-inset-bottom))]">
+        <div className="flex-1" aria-hidden />
 
         <div className="pb-8">
-          <p className="text-base text-muted-foreground">Добро пожаловать в</p>
+          <p className="text-base text-muted-foreground">
+            {visible[0]}
+            <TypingCursor visible={activeLine === 0} />
+          </p>
           <h1 className="mt-1 text-[3.1rem] leading-[0.95] font-extrabold tracking-tight">
-            <span className="block text-foreground">SHMIT</span>
-            <span className="text-brand-gradient block">COMPANY</span>
+            <span className="block text-foreground">
+              {typedCompany.slice(0, Math.min(5, typedCompany.length))}
+              {activeLine === 1 && typedCompany.length <= 5 ? <TypingCursor visible /> : null}
+            </span>
+            <span className="text-brand-gradient block">
+              {typedCompany.length > 6 ? typedCompany.slice(6) : ""}
+              {activeLine === 1 && typedCompany.length > 5 ? <TypingCursor visible /> : null}
+            </span>
           </h1>
           <p className="mt-4 text-[0.95rem] leading-relaxed text-muted-foreground">
-            Мы создаём цифровые решения
+            {typedDescription.slice(0, descriptionFirstLine.length)}
             <br />
-            для тебя и твоего комфорта.
+            {typedDescription.slice(descriptionFirstLine.length)}
+            <TypingCursor visible={activeLine === 2} />
           </p>
         </div>
 
@@ -66,12 +78,9 @@ function Welcome() {
             haptic("medium");
             navigate({ to: "/hub" });
           }}
-          className="press cta-gradient flex h-[4.25rem] w-full items-center justify-center gap-3 rounded-full px-6 text-lg font-bold text-primary-foreground"
+          className="welcome-button press flex aspect-[2081/526] h-auto w-full items-center justify-center rounded-full px-6 text-[1.35rem] leading-none font-black text-primary-foreground"
         >
-          Начать
-          <span className="grid h-9 w-9 place-items-center rounded-full bg-black/20">
-            <ArrowRight className="h-5 w-5" />
-          </span>
+          <span className="relative -top-[5px]">Начать</span>
         </button>
       </div>
     </div>

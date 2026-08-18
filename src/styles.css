@@ -108,7 +108,9 @@
   background-image: var(--gradient-card-hot);
   background-color: oklch(0.15 0.01 40 / 88%);
   border: 1px solid oklch(0.66 0.21 42 / 28%);
-  box-shadow: var(--shadow-soft), 0 0 40px -18px oklch(0.66 0.21 42 / 60%);
+  box-shadow:
+    var(--shadow-soft),
+    0 0 40px -18px oklch(0.66 0.21 42 / 60%);
   backdrop-filter: blur(18px);
 }
 
@@ -150,6 +152,97 @@
 
 @utility screen-in {
   animation: screen-in 0.42s cubic-bezier(0.22, 0.9, 0.2, 1) both;
+}
+
+.star-trails {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.welcome-screen {
+  background-image: url("/assets/welcome-background.png");
+  background-position: 50% 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.welcome-button {
+  background-image: url("/assets/welcome-button.png");
+  background-position: center;
+  background-size: 104.4% 137.6%;
+  background-repeat: no-repeat;
+}
+
+.glass-card-hot {
+  animation: premium-glow-pulse 3.2s ease-in-out infinite;
+}
+
+.typing-cursor {
+  display: inline-block;
+  margin-left: 0.08em;
+  animation: typing-cursor-blink 0.8s steps(1, end) infinite;
+}
+
+@keyframes typing-cursor-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes premium-glow-pulse {
+  0%,
+  100% {
+    box-shadow: var(--shadow-glow);
+  }
+  50% {
+    box-shadow:
+      0 0 24px -5px oklch(0.72 0.22 42 / 75%),
+      0 18px 50px -18px oklch(0.66 0.21 42 / 70%);
+  }
+}
+
+.star-trail {
+  position: absolute;
+  left: -8rem;
+  height: 2px;
+  opacity: 0;
+  transform: rotate(14deg);
+  transform-origin: left center;
+  background: linear-gradient(90deg, transparent, oklch(0.9 0.13 58 / 56%), transparent);
+  filter: blur(0.7px);
+  box-shadow: 0 0 11px oklch(0.78 0.16 52 / 42%);
+  animation: star-trail-flight linear both;
+  will-change: transform, opacity;
+}
+
+@keyframes star-trail-flight {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotate(14deg);
+  }
+  16% {
+    opacity: 0.58;
+  }
+  78% {
+    opacity: 0.34;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(calc(100vw + 22rem), 25vh, 0) rotate(14deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star-trails {
+    display: none;
+  }
+
+  .glass-card-hot {
+    animation: none;
+  }
 }
 
 @keyframes screen-in {
