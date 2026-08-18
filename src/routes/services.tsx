@@ -4,25 +4,12 @@ import { AppShell } from "@/components/AppShell";
 import { haptic } from "@/lib/telegram";
 import vpn2 from "@/assets/vpn2.asset.json";
 import pay from "@/assets/pay.asset.json";
-
-export const Route = createFileRoute("/services")({
-  head: () => ({
-    meta: [
-      { title: "Услуги SHMIT — VPN, Steam, Spotify, Telegram Premium" },
-      {
-        name: "description",
-        content:
-          "Оформи услуги SHMIT прямо в приложении: VPN 2.0, пополнение Steam, подписки Spotify и Telegram Premium, звёзды Telegram.",
-      },
-      { property: "og:title", content: "Услуги SHMIT" },
-      {
-        property: "og:description",
-        content: "Выбери нужную услугу и оформи всё прямо в приложении.",
-      },
-    ],
-  }),
-  component: Services,
-});
+import steam from "@/assets/steam.asset.json";
+import telegram from "@/assets/telegram.asset.json";
+import star from "@/assets/star.asset.json";
+import spotify from "@/assets/spotify.asset.json";
+import gpt from "@/assets/gpt.asset.json";
+import shop from "@/assets/shop.asset.json";
 
 const services = [
   { title: "SHMIT VPN 2.0", desc: "VPN + белые списки", price: "80 ₽ / месяц", logo: vpn2.url },
@@ -30,6 +17,24 @@ const services = [
   { title: "SHMIT PAY", desc: "Подписка Spotify", price: null, logo: pay.url },
   { title: "SHMIT PAY", desc: "Подписка Telegram Premium", price: null, logo: pay.url },
   { title: "SHMIT PAY", desc: "Купить звёзды в Telegram ⭐️", price: null, logo: pay.url },
+  { title: "Пополнить Steam", desc: "SHMIT PAY", price: null, logo: steam.url, pad: true },
+  { title: "Telegram Premium", desc: "SHMIT PAY", price: null, logo: telegram.url, pad: true },
+  {
+    title: "Пополнить Telegram Stars",
+    desc: "SHMIT PAY",
+    price: null,
+    logo: star.url,
+    pad: true,
+  },
+  {
+    title: "Купить подписку Spotify",
+    desc: "SHMIT PAY",
+    price: null,
+    logo: spotify.url,
+    pad: true,
+  },
+  { title: "Создать AI-фотосессию", desc: "SHMIT GPT", price: null, logo: gpt.url },
+  { title: "Купить стильный шмот", desc: "SHMIT SHOP", price: null, logo: shop.url },
 ];
 
 function Services() {
