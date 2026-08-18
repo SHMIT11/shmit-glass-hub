@@ -2,6 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { useEffect } from "react";
 import sphere from "@/assets/sphere.jpg";
+import { ShootingStars } from "@/components/ShootingStars";
 import { haptic, initTelegram } from "@/lib/telegram";
 
 export const Route = createFileRoute("/")({
@@ -31,6 +32,7 @@ function Welcome() {
 
   return (
     <div className="relative flex min-h-screen flex-col overflow-hidden bg-background">
+      <ShootingStars />
       <div
         aria-hidden
         className="pointer-events-none absolute -top-24 left-1/2 h-[26rem] w-[26rem] -translate-x-1/2 rounded-full blur-3xl"

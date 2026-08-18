@@ -4,6 +4,12 @@ import { AppShell } from "@/components/AppShell";
 import { haptic } from "@/lib/telegram";
 import vpn2 from "@/assets/vpn2.asset.json";
 import pay from "@/assets/pay.asset.json";
+import steam from "@/assets/steam.asset.json";
+import telegram from "@/assets/telegram.asset.json";
+import star from "@/assets/star.asset.json";
+import spotify from "@/assets/spotify.asset.json";
+import gpt from "@/assets/gpt.asset.json";
+import shop from "@/assets/shop.asset.json";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -12,7 +18,7 @@ export const Route = createFileRoute("/services")({
       {
         name: "description",
         content:
-          "Оформи услуги SHMIT прямо в приложении: VPN 2.0, пополнение Steam, подписки Spotify и Telegram Premium, звёзды Telegram.",
+          "Оформи услуги SHMIT прямо в приложении: VPN 2.0, пополнение Steam, подписки Spotify и Telegram Premium, звёзды Telegram, AI-фотосессия и SHMIT SHOP.",
       },
       { property: "og:title", content: "Услуги SHMIT" },
       {
@@ -26,10 +32,25 @@ export const Route = createFileRoute("/services")({
 
 const services = [
   { title: "SHMIT VPN 2.0", desc: "VPN + белые списки", price: "80 ₽ / месяц", logo: vpn2.url },
-  { title: "SHMIT PAY", desc: "Пополнить Steam", price: null, logo: pay.url },
-  { title: "SHMIT PAY", desc: "Подписка Spotify", price: null, logo: pay.url },
-  { title: "SHMIT PAY", desc: "Подписка Telegram Premium", price: null, logo: pay.url },
-  { title: "SHMIT PAY", desc: "Купить звёзды в Telegram ⭐️", price: null, logo: pay.url },
+  { title: "Пополнить Steam", desc: "SHMIT PAY", price: null, logo: steam.url, pad: true },
+  {
+    title: "Купить подписку Spotify",
+    desc: "SHMIT PAY",
+    price: null,
+    logo: spotify.url,
+    pad: true,
+  },
+  { title: "Telegram Premium", desc: "SHMIT PAY", price: null, logo: telegram.url, pad: true },
+  {
+    title: "Пополнить Telegram Stars",
+    desc: "SHMIT PAY",
+    price: null,
+    logo: star.url,
+    pad: true,
+  },
+  { title: "Оплата и пополнения", desc: "SHMIT PAY", price: null, logo: pay.url },
+  { title: "Создать AI-фотосессию", desc: "SHMIT GPT", price: null, logo: gpt.url },
+  { title: "Купить стильный шмот", desc: "SHMIT SHOP", price: null, logo: shop.url },
 ];
 
 function Services() {
@@ -66,7 +87,11 @@ function Services() {
               onClick={() => haptic("light")}
               className="glass-row press flex w-full items-center gap-4 rounded-[1.6rem] p-3.5 text-left"
             >
-              <span className="grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-[1.1rem] bg-black/40">
+              <span
+                className={`grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-[1.1rem] bg-black/40 ${
+                  "pad" in s && s.pad ? "p-2.5" : ""
+                }`}
+              >
                 <img
                   src={s.logo}
                   alt={s.title}

@@ -176,3 +176,52 @@
     transform: translateY(8px) scale(1.02);
   }
 }
+
+@utility star-trail {
+  position: absolute;
+  width: calc(9rem * var(--trail-scale, 1));
+  height: 1px;
+  border-radius: 999px;
+  opacity: 0;
+  filter: blur(0.6px);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    oklch(1 0 0 / 20%) 45%,
+    oklch(0.8 0.14 55 / 55%) 85%,
+    oklch(0.95 0.06 70 / 70%)
+  );
+  transform: rotate(18deg) translate3d(0, 0, 0);
+  animation-name: star-trail;
+  animation-timing-function: cubic-bezier(0.35, 0, 0.5, 1);
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes star-trail {
+  0% {
+    opacity: 0;
+    transform: rotate(18deg) translate3d(0, 0, 0) scaleX(0.4);
+  }
+  2% {
+    opacity: 0.5;
+  }
+  14% {
+    opacity: 0.35;
+  }
+  20% {
+    opacity: 0;
+    transform: rotate(18deg) translate3d(135vw, 0, 0) scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(18deg) translate3d(135vw, 0, 0) scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star-trail {
+    animation: none;
+    display: none;
+  }
+}

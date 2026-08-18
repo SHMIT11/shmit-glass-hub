@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "asset_id": "00d78881-ad2c-46ea-a3df-406c45d9c3ed",
+  "asset_id": "bc12ab3b-7eac-4ba5-a001-254f3c9584ee",
   "project_id": "86382c29-55af-4b88-bde0-438080941fda",
-  "url": "/__l5e/assets-v1/00d78881-ad2c-46ea-a3df-406c45d9c3ed/shop.png",
-  "r2_key": "a/v1/86382c29-55af-4b88-bde0-438080941fda/00d78881-ad2c-46ea-a3df-406c45d9c3ed/shop.png",
-  "original_filename": "shop.png",
-  "size": 1315185,
+  "url": "/__l5e/assets-v1/bc12ab3b-7eac-4ba5-a001-254f3c9584ee/shop_centered.png",
+  "r2_key": "a/v1/86382c29-55af-4b88-bde0-438080941fda/bc12ab3b-7eac-4ba5-a001-254f3c9584ee/shop_centered.png",
+  "original_filename": "shop_centered.png",
+  "size": 325564,
   "content_type": "image/png",
-  "created_at": "2026-08-17T06:37:38Z"
+  "created_at": "2026-08-18T07:24:07Z"
 }
