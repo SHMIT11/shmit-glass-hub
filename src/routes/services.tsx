@@ -71,7 +71,11 @@ function Services() {
               onClick={() => haptic("light")}
               className="glass-row press flex w-full items-center gap-4 rounded-[1.6rem] p-3.5 text-left"
             >
-              <span className="grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-[1.1rem] bg-black/40">
+              <span
+                className={`grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-[1.1rem] bg-black/40 ${
+                  "pad" in s && s.pad ? "p-2.5" : ""
+                }`}
+              >
                 <img
                   src={s.logo}
                   alt={s.title}
