@@ -1,9 +1,11 @@
 import type { ReactNode } from "react";
 import { BottomNav } from "./BottomNav";
+import { ShootingStars } from "./ShootingStars";
 
 export function AppShell({ children }: { children: ReactNode }) {
   return (
     <div className="relative min-h-screen overflow-hidden bg-background">
+      <ShootingStars />
       <div
         aria-hidden
         className="pointer-events-none absolute -top-40 -right-24 h-80 w-80 rounded-full blur-3xl"
