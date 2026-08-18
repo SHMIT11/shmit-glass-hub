@@ -2,6 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { useEffect } from "react";
 import sphere from "@/assets/sphere.jpg";
+import { ShootingStars } from "@/components/ShootingStars";
 import { haptic, initTelegram } from "@/lib/telegram";
 
 export const Route = createFileRoute("/")({
