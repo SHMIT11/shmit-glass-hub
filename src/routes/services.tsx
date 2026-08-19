@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { AppShell } from "@/components/AppShell";
+import { assetUrl } from "@/lib/assets";
 import { haptic, openTelegramLink } from "@/lib/telegram";
 import vpn2 from "@/assets/vpn2.asset.json";
 
@@ -51,7 +52,7 @@ const groups: {
         title: "SHMIT VPN 2.0",
         desc: "VPN + белые списки",
         price: "80 ₽ / месяц",
-        logo: vpn2.url,
+        logo: assetUrl(vpn2.url),
         url: "https://t.me/SHMIT_VPN2_bot",
       },
     ],

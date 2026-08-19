@@ -163,14 +163,14 @@
 }
 
 .welcome-screen {
-  background-image: url("/assets/welcome-background.png");
+  background-image: var(--welcome-background);
   background-position: 50% 100%;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .welcome-button {
-  background-image: url("/assets/welcome-button.png");
+  background-image: var(--welcome-button);
   background-position: center;
   background-size: 104.4% 137.6%;
   background-repeat: no-repeat;

@@ -1,8 +1,10 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
+import type { CSSProperties } from "react";
 import { StarTrails } from "@/components/StarTrails";
 import { TypingCursor } from "@/components/TypingCursor";
 import { useTypingSequence } from "@/hooks/use-typing-sequence";
+import { assetUrl } from "@/lib/assets";
 import { haptic, initTelegram } from "@/lib/telegram";
 
 export const Route = createFileRoute("/")({
@@ -44,7 +46,15 @@ function Welcome() {
   const descriptionFirstLine = "Мы создаём цифровые решения";
 
   return (
-    <div className="welcome-screen relative flex min-h-[100dvh] flex-col overflow-hidden bg-background">
+    <div
+      className="welcome-screen relative flex min-h-[100dvh] flex-col overflow-hidden bg-background"
+      style={
+        {
+          "--welcome-background": `url("${assetUrl("/assets/welcome-background.png")}")`,
+          "--welcome-button": `url("${assetUrl("/assets/welcome-button.png")}")`,
+        } as CSSProperties
+      }
+    >
       <StarTrails />
       <div className="screen-in relative z-10 mx-auto flex w-full max-w-md flex-1 flex-col px-6 pt-[max(2rem,env(safe-area-inset-top))] pb-[max(2rem,env(safe-area-inset-bottom))]">
         <div className="flex-1" aria-hidden />

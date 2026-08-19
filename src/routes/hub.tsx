@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { AppShell } from "@/components/AppShell";
 import { TypingCursor } from "@/components/TypingCursor";
 import { useTypingSequence } from "@/hooks/use-typing-sequence";
+import { assetUrl } from "@/lib/assets";
 import { haptic, initTelegram, openTelegramLink } from "@/lib/telegram";
 import vpn from "@/assets/vpn.asset.json";
 import vpn2 from "@/assets/vpn2.asset.json";
@@ -33,7 +34,7 @@ const projects = [
   {
     name: "SHMIT VPN",
     desc: "Быстрый и стабильный VPN для любой сети",
-    logo: vpn.url,
+    logo: assetUrl(vpn.url),
     hot: false,
     badge: null as string | null,
     url: "https://t.me/SHMIT_VPN_BOT",
@@ -41,7 +42,7 @@ const projects = [
   {
     name: "SHMIT VPN 2.0",
     desc: "Новое поколение VPN с белыми списками.",
-    logo: vpn2.url,
+    logo: assetUrl(vpn2.url),
     hot: true,
     badge: "Новинка",
     url: "https://t.me/SHMIT_VPN2_bot",
@@ -49,7 +50,7 @@ const projects = [
   {
     name: "SHMIT PAY",
     desc: "Удобные платежи и пополнения",
-    logo: pay.url,
+    logo: assetUrl(pay.url),
     hot: false,
     badge: null,
     url: "https://t.me/SHMIT_PAY_BOT",
@@ -57,7 +58,7 @@ const projects = [
   {
     name: "SHMIT SHOP",
     desc: "Магазин одежды и аксессуаров",
-    logo: shop.url,
+    logo: assetUrl(shop.url),
     hot: false,
     badge: null,
     url: "https://t.me/Shmit_Shop_bot",
@@ -159,7 +160,7 @@ function Hub() {
       >
         <div className="grid h-[4.5rem] w-[4.5rem] shrink-0 place-items-center overflow-hidden rounded-[1.35rem] bg-black/40">
           <img
-            src={gpt.url}
+            src={assetUrl(gpt.url)}
             alt="SHMIT GPT"
             loading="lazy"
             className="h-full w-full object-contain"
